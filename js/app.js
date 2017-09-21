@@ -11,7 +11,7 @@ var calculadora = {
 	operador:		" ",		//Variable operacion matemática
 	continuaOp:	" ",		//Variable para continuar la operación
 	resultado:	" ",		//Variable que muestra resultado
-	igual:			" ",		//Al presionar igual, nos permitira seguir realizando operaciones
+	sigueIgual:	" ",		//Al presionar igual, nos permitira seguir realizando operaciones
 
 		//Función iniciar aplicación
 		init: function() {
@@ -106,9 +106,28 @@ var calculadora = {
 	  		}
 			this.iniciar=0; // Cambia estado de iniciar
 			this.continuaOp=0; // cambia el estado de continuar operacion
-			this.igual=0; // cambia el estado de continuar el igual
+			this.sigueIgual=0; // cambia el estado de continuar el igual
 		},
 
+		//Funcion de números decimales
+		numeroDecimal: function() {
+				// Limita a 8 números mostrados en pantalla
+				if (this.pantalla.innerHTML.length < 8){
 
-}
+				// Si variable decimal esta en 0 y el numero es nuevo
+				if (this.decimal==0 && this.iniciar==1){
+					// Muestra en pantallael cero con el punto
+					this.pantalla.innerHTML="0.";
+					this.guardar="0.";
+					// Verifica si el número decimal esta para incorporar y el numero esta iniciado
+				} else if (this.decimal==0 && this.iniciar==0){
+					//Concatena lo almacenado con la coma
+					this.pantalla.innerHTML+=".";
+					this.guardar+="."; 
+				}
+				this.iniciar=0; // Cambia para continuarOp el numero
+				this.decimal=1; // Desactiva la funcion de incorporar otra coma
+			}
+		}
+};
 calculadora.init();	// Inicia el programa
