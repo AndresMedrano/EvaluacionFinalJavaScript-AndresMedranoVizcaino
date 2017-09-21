@@ -87,7 +87,27 @@ var calculadora = {
 				calculadora.raizCuadrada();
 			}
 		},
-
+		//Función para capturar numero al presiona tecla
+		ingresaNumero: function(digito){
+			 // Limita a 8 números mostrados en pantalla
+			if (this.pantalla.innerHTML.length < 8){
+							// Condicional para verificar si no hay número en pantalla y si  la variable (iniciar) esta en true
+	           	if (this.guardar=="0" || this.iniciar==1){
+								// Captura el primer digito presionado
+	            	this.pantalla.innerHTML=digito;
+								// almacena en una variable para guardar primer digito
+	            	this.guardar=digito;
+								// Guardar si ya tiene almacenado algo o iniciar esta en falso
+	            } else {
+								// Muestra en pantalla el dígito presionado
+	            	this.pantalla.innerHTML+=digito;
+	        	    this.guardar+=digito
+							}
+	  		}
+			this.iniciar=0; // Cambia estado de iniciar
+			this.continuaOp=0; // cambia el estado de continuar operacion
+			this.igual=0; // cambia el estado de continuar el igual
+		},
 
 
 }
